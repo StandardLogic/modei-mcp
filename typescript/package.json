@@ -1,0 +1,41 @@
+{
+  "name": "modus-mcp",
+  "version": "1.1.0",
+  "description": "Modus Management MCP Server - Manage issuers, passports, and gates from Claude",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "modus-mcp": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "test": "vitest run",
+    "lint": "eslint src/**/*.ts",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "typescript": "^5.3.0",
+    "vitest": "^1.0.0",
+    "ts-node": "^10.9.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "modus",
+    "ai-agents",
+    "permissions",
+    "passports",
+    "management"
+  ],
+  "author": "Standard Logic Co.",
+  "license": "MIT"
+}
