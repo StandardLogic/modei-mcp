@@ -49,7 +49,7 @@ class AsyncModusClient:
 
     Args:
         api_key: Modus API key (e.g. ``uni_live_xxx``).
-        base_url: API base URL. Defaults to ``https://modusoperator.com``.
+        base_url: API base URL. Defaults to ``https://modustrust.ai``.
         timeout: Request timeout in seconds. Defaults to 30.
     """
 

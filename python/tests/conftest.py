@@ -6,7 +6,7 @@ import respx
 from modus.client import ModusClient
 from modus.async_client import AsyncModusClient
 
-BASE_URL = "https://modusoperator.com"
+BASE_URL = "https://modustrust.ai"
 API_KEY = "uni_test_xxx"
 
 

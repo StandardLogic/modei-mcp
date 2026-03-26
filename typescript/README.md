@@ -6,13 +6,13 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![MCP Compatible](https://img.shields.io/badge/MCP-compatible-green)](https://modelcontextprotocol.io)
 
-MCP server for managing [Modus](https://modusoperator.com) agent governance infrastructure — passports, gates, constraints, enforcement, and audit — directly from Claude, Cursor, or any MCP client.
+MCP server for managing [Modus](https://modustrust.ai) agent governance infrastructure — passports, gates, constraints, enforcement, and audit — directly from Claude, Cursor, or any MCP client.
 
 ---
 
 ## What is Modus?
 
-[Modus](https://modusoperator.com) is the trust layer for AI agents. It has two sides:
+[Modus](https://modustrust.ai) is the trust layer for AI agents. It has two sides:
 
 **Gates** protect your tools, APIs, and MCP servers. A Gate is a verification checkpoint — you define a permission catalog of what's allowed, and incoming agent requests are checked against it locally, with no network round-trip. Every decision produces a signed attestation for a tamper-evident audit trail.
 
@@ -20,13 +20,13 @@ MCP server for managing [Modus](https://modusoperator.com) agent governance infr
 
 This MCP server lets you manage both sides conversationally from any MCP client.
 
-> [Protocol specification](https://github.com/uniplexprotocol/uniplex) · [Documentation](https://modusoperator.com) · [MCP SDK (TypeScript)](https://www.npmjs.com/package/modus-mcp-sdk) · [MCP SDK (Python)](https://pypi.org/project/modus-mcp-sdk/)
+> [Protocol specification](https://github.com/uniplexprotocol/uniplex) · [Documentation](https://modustrust.ai) · [MCP SDK (TypeScript)](https://www.npmjs.com/package/modus-mcp-sdk) · [MCP SDK (Python)](https://pypi.org/project/modus-mcp-sdk/)
 
 ---
 
 ## Prerequisites
 
-- A **Modus account** — sign up at the [Modus Dashboard](https://modusoperator.com)
+- A **Modus account** — sign up at the [Modus Dashboard](https://modustrust.ai)
 - **Claude Desktop**, **Claude Code**, **Cursor**, or any MCP-compatible client
 - An **API key** — generate one from the dashboard
 
@@ -177,7 +177,7 @@ Restart your client and you're ready to go.
 | Variable | Required | Default | Description |
 |----------|----------|---------|-------------|
 | `MODUS_API_KEY` | Yes | — | Your Modus API key (`uni_live_*` or `uni_test_*`) |
-| `MODUS_API_URL` | No | `https://modusoperator.com` | API base URL (override for local dev) |
+| `MODUS_API_URL` | No | `https://modustrust.ai` | API base URL (override for local dev) |
 
 ---
 
@@ -217,9 +217,9 @@ Run `npx modus-mcp` directly in your terminal to check for startup errors. Ensur
 
 ## Learn More
 
-- [Modus Dashboard](https://modusoperator.com) — Create your account and manage gates, passports, and API keys
+- [Modus Dashboard](https://modustrust.ai) — Create your account and manage gates, passports, and API keys
 - [Protocol Specification](https://github.com/uniplexprotocol/uniplex)
-- [Documentation & Guides](https://modusoperator.com)
+- [Documentation & Guides](https://modustrust.ai)
 - [MCP SDK (TypeScript)](https://www.npmjs.com/package/modus-mcp-sdk) · [MCP SDK (Python)](https://pypi.org/project/modus-mcp-sdk/)
 - [Management SDK (Python)](https://pypi.org/project/modus-mcp/)
 - [Discussions](https://github.com/StandardLogic/modus-mcp/discussions) — Questions and ideas

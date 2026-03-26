@@ -22,7 +22,7 @@ import { ApiClient } from './api-client.js';
 import { allTools, handleToolCall } from './tools/index.js';
 
 // Configuration from environment
-const MODUS_API_URL = process.env.MODUS_API_URL || 'https://modusoperator.com';
+const MODUS_API_URL = process.env.MODUS_API_URL || 'https://modustrust.ai';
 const MODUS_API_KEY = process.env.MODUS_API_KEY;
 
 async function main() {

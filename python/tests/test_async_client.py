@@ -17,7 +17,7 @@ from modus.exceptions import (
     ValidationError,
 )
 
-BASE_URL = "https://modusoperator.com"
+BASE_URL = "https://modustrust.ai"
 API_KEY = "uni_test_xxx"
 
 pytestmark = pytest.mark.asyncio
