@@ -20,7 +20,7 @@ MCP server for managing [Modus](https://modustrust.ai) agent governance infrastr
 
 This MCP server lets you manage both sides conversationally from any MCP client.
 
-> [Protocol specification](https://github.com/uniplexprotocol/uniplex) · [Documentation](https://modustrust.ai) · [MCP SDK (TypeScript)](https://www.npmjs.com/package/modus-mcp-sdk) · [MCP SDK (Python)](https://pypi.org/project/modus-mcp-sdk/)
+> [Documentation](https://modustrust.ai/docs) · [MCP SDK (TypeScript)](https://www.npmjs.com/package/modus-mcp) · [Python SDK](https://pypi.org/project/modus-sdk/)
 
 ---
 
@@ -48,7 +48,7 @@ Add Modus to your MCP configuration:
       "command": "npx",
       "args": ["modus-mcp"],
       "env": {
-        "MODUS_API_KEY": "uni_live_xxxxxxxx"
+        "MODUS_API_KEY": "mod_live_xxxxxxxx"
       }
     }
   }
@@ -61,7 +61,7 @@ Add Modus to your MCP configuration:
 claude mcp add modus \
   --scope user \
   -- npx modus-mcp \
-  --env MODUS_API_KEY=uni_live_xxxxxxxx
+  --env MODUS_API_KEY=mod_live_xxxxxxxx
 ```
 
 Restart your client and you're ready to go.
@@ -176,7 +176,7 @@ Restart your client and you're ready to go.
 
 | Variable | Required | Default | Description |
 |----------|----------|---------|-------------|
-| `MODUS_API_KEY` | Yes | — | Your Modus API key (`uni_live_*` or `uni_test_*`) |
+| `MODUS_API_KEY` | Yes | — | Your Modus API key (`mod_live_*` or `mod_test_*`) |
 | `MODUS_API_URL` | No | `https://modustrust.ai` | API base URL (override for local dev) |
 
 ---
@@ -193,7 +193,7 @@ For local testing against a development dashboard:
       "args": ["modus-mcp"],
       "env": {
         "MODUS_API_URL": "http://localhost:3000",
-        "MODUS_API_KEY": "uni_test_xxxxxxxx"
+        "MODUS_API_KEY": "mod_test_xxxxxxxx"
       }
     }
   }
@@ -208,7 +208,7 @@ For local testing against a development dashboard:
 Make sure you've restarted Claude Desktop after editing the config file. Check for JSON syntax errors in your config.
 
 **"Invalid API key" error**
-Verify your key starts with `uni_live_` (production) or `uni_test_` (development) and hasn't been revoked.
+Verify your key starts with `mod_live_` (production) or `mod_test_` (development) and hasn't been revoked.
 
 **Tools aren't showing up**
 Run `npx modus-mcp` directly in your terminal to check for startup errors. Ensure Node.js 18+.
@@ -218,10 +218,9 @@ Run `npx modus-mcp` directly in your terminal to check for startup errors. Ensur
 ## Learn More
 
 - [Modus Dashboard](https://modustrust.ai) — Create your account and manage gates, passports, and API keys
-- [Protocol Specification](https://github.com/uniplexprotocol/uniplex)
-- [Documentation & Guides](https://modustrust.ai)
-- [MCP SDK (TypeScript)](https://www.npmjs.com/package/modus-mcp-sdk) · [MCP SDK (Python)](https://pypi.org/project/modus-mcp-sdk/)
-- [Management SDK (Python)](https://pypi.org/project/modus-mcp/)
+- [Documentation & Guides](https://modustrust.ai/docs)
+- [MCP SDK (TypeScript)](https://www.npmjs.com/package/modus-mcp)
+- [Python SDK](https://pypi.org/project/modus-sdk/)
 - [Discussions](https://github.com/StandardLogic/modus-mcp/discussions) — Questions and ideas
 
 ---

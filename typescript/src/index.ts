@@ -31,10 +31,10 @@ async function main() {
     console.error('Error: MODUS_API_KEY environment variable is required');
     console.error('');
     console.error('Usage:');
-    console.error('  MODUS_API_KEY=sk_xxx npx modus-mcp');
+    console.error('  MODUS_API_KEY=mod_live_xxx npx modus-mcp');
     console.error('');
     console.error('Or for local development:');
-    console.error('  MODUS_API_KEY=uni_xxx npx modus-mcp');
+    console.error('  MODUS_API_KEY=mod_test_xxx npx modus-mcp');
     process.exit(1);
   }
 
