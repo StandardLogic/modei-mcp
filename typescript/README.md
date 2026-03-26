@@ -6,15 +6,13 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![MCP Compatible](https://img.shields.io/badge/MCP-compatible-green)](https://modelcontextprotocol.io)
 
-**The trust layer for AI agents.** Gates protect your tools. Passports authorize your agents. Everything verified locally.
-
-MCP server for managing the [Modus](https://modusoperator.com) trust infrastructure — gates, passports, catalogs, constraints, enforcement, commerce, and billing — directly from Claude, Cursor, or any MCP client.
+MCP server for managing [Modus](https://modusoperator.com) agent governance infrastructure — passports, gates, constraints, enforcement, and audit — directly from Claude, Cursor, or any MCP client.
 
 ---
 
 ## What is Modus?
 
-[Modus](https://modusoperator.com) is an open protocol that adds a lightweight trust layer for the agentic web. It has two sides:
+[Modus](https://modusoperator.com) is the trust layer for AI agents. It has two sides:
 
 **Gates** protect your tools, APIs, and MCP servers. A Gate is a verification checkpoint — you define a permission catalog of what's allowed, and incoming agent requests are checked against it locally, with no network round-trip. Every decision produces a signed attestation for a tamper-evident audit trail.
 
