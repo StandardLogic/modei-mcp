@@ -1,6 +1,6 @@
 {
   "name": "modei-mcp",
-  "version": "1.1.1",
+  "version": "1.0.0",
   "description": "Modei Management MCP Server - Manage issuers, passports, and gates from Claude",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

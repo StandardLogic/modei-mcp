@@ -60,7 +60,7 @@ async function main() {
   const server = new Server(
     {
       name: 'modei-manage',
-      version: '1.1.0',
+      version: '1.0.0',
     },
     {
       capabilities: {
@@ -125,7 +125,7 @@ async function main() {
         body: JSON.stringify({
           passport_id: MODEI_PASSPORT_ID,
           sdk: 'modei-mcp',
-          sdk_version: '1.2.0',
+          sdk_version: '1.0.0',
           runtime: 'nodejs',
           env: process.env.NODE_ENV || 'development',
           started_at: new Date().toISOString(),
