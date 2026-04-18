@@ -1,12 +1,17 @@
 {
   "name": "modei-mcp",
   "version": "1.0.0",
-  "description": "Modei Management MCP Server - Manage issuers, passports, and gates from Claude",
+  "description": "Modei MCP Server — trust infrastructure tools for AI agents in Claude, Cursor, and any MCP client",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
-    "modei-mcp": "./dist/index.js"
+    "modei-mcp": "dist/index.js"
   },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
@@ -40,5 +45,14 @@
     "management"
   ],
   "author": "Standard Logic Co.",
-  "license": "MIT"
+  "license": "MIT",
+  "homepage": "https://modei.ai",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StandardLogic/modei-mcp.git",
+    "directory": "typescript"
+  },
+  "bugs": {
+    "url": "https://github.com/StandardLogic/modei-mcp/issues"
+  }
 }
