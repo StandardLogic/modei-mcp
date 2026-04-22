@@ -187,8 +187,11 @@ def test_self_issued_permit_at_l0_gate() -> None:
         f"expected allowed=true; got body={body!r} "
         f"(status={check.status_code})"
     )
-    assert body.get("decision") == "permit", (
-        f"expected decision='permit'; got body={body!r}"
+    # Endpoint returns "allow"/"deny" lowercase; canonical
+    # PERMIT/BLOCK/SUSPEND taxonomy reconciliation is tracked in
+    # modei specs/modei-remaining-checklist.md C19.7 additions.
+    assert body.get("decision") == "allow", (
+        f"expected decision='allow'; got body={body!r}"
     )
 
 
@@ -246,6 +249,7 @@ def test_registered_delegation_chain_permits_at_l0_gate() -> None:
     child_signed = (
         DelegationBuilder(parent=parent_signed, parent_credentials=parent_creds)
         .authorize(child_credentials=child_creds)
+        .with_identity_claim("child@dev.local")  # required: backend rejects null agent_name on register
         .with_permissions([{"permission_key": "test:permit", "constraints": {}}])
         .with_expiry(expires_in=timedelta(hours=1))
         .sign()
