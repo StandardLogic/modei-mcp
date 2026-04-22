@@ -49,10 +49,10 @@
   "homepage": "https://modei.ai",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/StandardLogic/modei-mcp.git",
-    "directory": "typescript"
+    "url": "git+https://github.com/StandardLogic/modei-sdk.git",
+    "directory": "mcp"
   },
   "bugs": {
-    "url": "https://github.com/StandardLogic/modei-mcp/issues"
+    "url": "https://github.com/StandardLogic/modei-sdk/issues"
   }
 }

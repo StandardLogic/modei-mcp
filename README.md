@@ -5,16 +5,17 @@
 
 The trust layer for AI agents. Gates protect your tools. Passports authorize your agents. Everything verified locally.
 
-This repo contains two packages:
+This repo contains three packages:
 
 | Package | Directory | Published as | Description |
-|---------|-----------|-------------|-------------|
-| **MCP Server** | [`typescript/`](typescript/) | [`modei-mcp`](https://www.npmjs.com/package/modei-mcp) on npm | MCP server for managing Modei infrastructure from Claude, Cursor, or any MCP client |
-| **Python SDK** | [`python/`](python/) | [`modei-sdk`](https://pypi.org/project/modei-sdk/) on PyPI | Python REST API client for managing gates, passports, and enforcement policies |
+|---------|-----------|--------------|-------------|
+| **MCP Server** | [`mcp/`](mcp/) | [`modei-mcp`](https://www.npmjs.com/package/modei-mcp) on npm | MCP server for managing Modei infrastructure from Claude, Cursor, or any MCP client |
+| **Python SDK** | [`python/`](python/) | [`modei-python`](https://pypi.org/project/modei-python/) on PyPI | Python SDK for REST API and self-issued passport workflows |
+| **TypeScript SDK** | [`typescript/`](typescript/) | `modei-typescript` on npm | TypeScript SDK for REST API and self-issued passport workflows *(coming soon)* |
 
 ---
 
-## MCP Server (TypeScript)
+## MCP Server
 
 [![npm version](https://img.shields.io/npm/v/modei-mcp)](https://www.npmjs.com/package/modei-mcp)
 
@@ -38,16 +39,16 @@ Add to your MCP client config:
 }
 ```
 
-See [`typescript/README.md`](typescript/README.md) for full documentation.
+See [`mcp/README.md`](mcp/README.md) for full documentation.
 
 ---
 
 ## Python SDK
 
-[![PyPI version](https://img.shields.io/pypi/v/modei-sdk)](https://pypi.org/project/modei-sdk/)
+[![PyPI version](https://img.shields.io/pypi/v/modei-python)](https://pypi.org/project/modei-python/)
 
 ```bash
-pip install modei-sdk
+pip install modei-python
 ```
 
 ```python
@@ -58,6 +59,12 @@ gates = client.list_gates()
 ```
 
 See [`python/README.md`](python/README.md) for full documentation.
+
+---
+
+## TypeScript SDK
+
+*Coming soon.*
 
 ---
 
