@@ -59,6 +59,9 @@ Repository = "https://github.com/StandardLogic/modei-sdk"
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
+markers = [
+    "staging: tests that require a live Modei staging URL (gated on MODEI_STAGING_URL env var)",
+]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/modei"]
