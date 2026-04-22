@@ -85,11 +85,11 @@ export function createRealtimeAdapter(
     });
 
     if (!response.ok) {
-      const err = await response.json().catch(() => ({ error: 'Unknown error' }));
+      const err = (await response.json().catch(() => ({ error: 'Unknown error' }))) as { error?: string };
       throw new Error(`Failed to exchange passport for token: ${err.error || response.status}`);
     }
 
-    const data = await response.json();
+    const data = (await response.json()) as { token: string };
     return data.token;
   }
 
