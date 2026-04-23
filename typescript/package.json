@@ -85,6 +85,16 @@
         "types": "./dist/passport/tier.d.cts",
         "default": "./dist/passport/tier.cjs"
       }
+    },
+    "./passport/credentials": {
+      "import": {
+        "types": "./dist/passport/credentials.d.ts",
+        "default": "./dist/passport/credentials.js"
+      },
+      "require": {
+        "types": "./dist/passport/credentials.d.cts",
+        "default": "./dist/passport/credentials.cjs"
+      }
     }
   },
   "files": [

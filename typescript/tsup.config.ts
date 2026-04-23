@@ -8,6 +8,7 @@ export default defineConfig({
     'src/passport/envelope.ts',
     'src/passport/agentId.ts',
     'src/passport/tier.ts',
+    'src/passport/credentials.ts',
   ],
   format: ['esm', 'cjs'],
   dts: true,

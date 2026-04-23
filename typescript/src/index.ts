@@ -4,6 +4,12 @@ export {
   type PassportVerifyReasonCode,
 } from './passport/reasons.js';
 export { SELF_AGENT_ID_PREFIX, deriveSelfAgentId } from './passport/agentId.js';
+export {
+  AgentCredentials,
+  CREDENTIALS_FORMAT_VERSION,
+  ENV_PATH_VAR,
+  type AgentCredentialsInit,
+} from './passport/credentials.js';
 export { TrustTier, tierRank, deriveTier } from './passport/tier.js';
 export {
   delegationChainEntrySchema,
