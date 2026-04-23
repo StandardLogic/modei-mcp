@@ -7,7 +7,7 @@
  * Enables developers to manage issuers, passports, and gates directly from Claude.
  *
  * Usage:
- *   MODEI_API_KEY=sk_xxx npx modei-mcp
+ *   MODEI_API_KEY=mod_live_xxxxxxxx npx modei-mcp
  *   MODEI_API_KEY=mod_xxx npx modei-mcp
  */
 
@@ -43,7 +43,7 @@ async function main() {
     console.error('Error: MODEI_API_KEY environment variable is required');
     console.error('');
     console.error('Usage:');
-    console.error('  MODEI_API_KEY=sk_xxx npx modei-mcp');
+    console.error('  MODEI_API_KEY=mod_live_xxxxxxxx npx modei-mcp');
     console.error('');
     console.error('Or for local development:');
     console.error('  MODEI_API_KEY=mod_xxx npx modei-mcp');

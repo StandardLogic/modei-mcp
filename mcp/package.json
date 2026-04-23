@@ -1,6 +1,6 @@
 {
   "name": "modei-mcp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Modei MCP Server — trust infrastructure tools for AI agents in Claude, Cursor, and any MCP client",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
