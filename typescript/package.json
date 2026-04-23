@@ -95,6 +95,36 @@
         "types": "./dist/passport/credentials.d.cts",
         "default": "./dist/passport/credentials.cjs"
       }
+    },
+    "./passport/errors": {
+      "import": {
+        "types": "./dist/passport/errors.d.ts",
+        "default": "./dist/passport/errors.js"
+      },
+      "require": {
+        "types": "./dist/passport/errors.d.cts",
+        "default": "./dist/passport/errors.cjs"
+      }
+    },
+    "./passport/issuer": {
+      "import": {
+        "types": "./dist/passport/issuer.d.ts",
+        "default": "./dist/passport/issuer.js"
+      },
+      "require": {
+        "types": "./dist/passport/issuer.d.cts",
+        "default": "./dist/passport/issuer.cjs"
+      }
+    },
+    "./passport/verifier": {
+      "import": {
+        "types": "./dist/passport/verifier.d.ts",
+        "default": "./dist/passport/verifier.js"
+      },
+      "require": {
+        "types": "./dist/passport/verifier.d.cts",
+        "default": "./dist/passport/verifier.cjs"
+      }
     }
   },
   "files": [

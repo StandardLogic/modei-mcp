@@ -1,4 +1,4 @@
-export { canonicalizeStrict, CanonicalizationError } from './passport/canonical.js';
+export { canonicalizeStrict } from './passport/canonical.js';
 export {
   PASSPORT_VERIFY_REASON_CODES,
   type PassportVerifyReasonCode,
@@ -28,3 +28,27 @@ export {
   type PassportProvenance,
   type SignedPassport,
 } from './passport/envelope.js';
+export {
+  CanonicalizationError,
+  DelegationAuthorityMissingError,
+  DelegationChainTooDeepError,
+  DelegationError,
+  DelegationSubsetError,
+  ModeiError,
+  type DelegationSubsetErrorInit,
+} from './passport/errors.js';
+export {
+  MAX_CANONICAL_ENVELOPE_BYTES,
+  PassportIssuer,
+  signEnvelope,
+  type PassportIssuerOptions,
+  type SelfIssueOptions,
+  type SelfIssuePermission,
+} from './passport/issuer.js';
+export {
+  ED25519_PUBLIC_KEY_BYTES,
+  ED25519_SIGNATURE_BYTES,
+  MAX_DELEGATION_DEPTH,
+  PassportVerifier,
+  type ChainVerifyResult,
+} from './passport/verifier.js';

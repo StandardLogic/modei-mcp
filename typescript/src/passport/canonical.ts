@@ -21,28 +21,14 @@
 
 import { canonicalize } from 'json-canonicalize';
 
-/**
- * Raised when an input cannot be RFC 8785 canonicalized.
- *
- * Deliberately does not extend any built-in error subclass beyond `Error`.
- * Callers — and tests — must catch `CanonicalizationError` explicitly via
- * `instanceof`; this pins the contract against accidental drift.
- */
-export class CanonicalizationError extends Error {
-  override readonly name = 'CanonicalizationError';
-  readonly reasonCode: string;
-  readonly path: readonly string[];
+import { CanonicalizationError } from './errors.js';
 
-  constructor(reasonCode: string, path: readonly string[], detail?: string) {
-    const pathStr = path.length > 0 ? path.join('.') : '<root>';
-    const message =
-      detail !== undefined ? `${reasonCode} at ${pathStr}: ${detail}` : `${reasonCode} at ${pathStr}`;
-    super(message);
-    this.reasonCode = reasonCode;
-    this.path = path;
-    Object.setPrototypeOf(this, CanonicalizationError.prototype);
-  }
-}
+// Re-export for path stability. Migrated to errors.ts in C20.4 so the SDK's
+// full error tree lives in one place, but existing
+// `import { CanonicalizationError } from '.../passport/canonical'` calls
+// continue to resolve. The class now extends `ModeiError` instead of `Error`
+// directly; behavior is strictly additive (instanceof Error still holds).
+export { CanonicalizationError } from './errors.js';
 
 function walk(value: unknown, path: readonly string[]): void {
   if (typeof value === 'number') {

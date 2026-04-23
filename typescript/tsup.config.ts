@@ -9,6 +9,11 @@ export default defineConfig({
     'src/passport/agentId.ts',
     'src/passport/tier.ts',
     'src/passport/credentials.ts',
+    'src/passport/errors.ts',
+    'src/passport/issuer.ts',
+    'src/passport/verifier.ts',
+    // _subset.ts is intentionally NOT listed — tsup bundles its code inline
+    // into issuer.js / verifier.js so consumers cannot import it directly.
   ],
   format: ['esm', 'cjs'],
   dts: true,
