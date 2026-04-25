@@ -11,6 +11,9 @@
  *   MODEI_API_KEY=mod_xxx npx modei-mcp
  */
 
+import { readFileSync } from 'fs';
+import { join } from 'path';
+
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import {
@@ -21,6 +24,37 @@ import {
 import { ApiClient } from './api-client.js';
 import { allTools, handleToolCall } from './tools/index.js';
 import { createRealtimeAdapter, computeFingerprint, type RealtimeConfig, type AgentCredentials } from './realtime.js';
+
+const pkg = JSON.parse(
+  readFileSync(join(__dirname, '..', 'package.json'), 'utf-8'),
+) as { version: string; description: string };
+
+// Handle --help and --version before any config validation. These are
+// universal CLI conventions and must work without credentials.
+const argv = process.argv.slice(2);
+if (argv.includes('--help') || argv.includes('-h')) {
+  process.stdout.write(
+    `${pkg.description}\n` +
+    `\n` +
+    `Usage:\n` +
+    `  MODEI_API_KEY=mod_live_xxxxxxxx npx modei-mcp\n` +
+    `\n` +
+    `Environment variables:\n` +
+    `  MODEI_API_KEY    Required. Your Modei API key (starts with mod_live_ or mod_test_).\n` +
+    `  MODEI_API_URL    Optional. API base URL (defaults to https://modei.ai).\n` +
+    `\n` +
+    `Example:\n` +
+    `  MODEI_API_KEY=mod_live_xxxxxxxx npx modei-mcp\n` +
+    `\n` +
+    `Documentation:\n` +
+    `  https://modei.ai\n`,
+  );
+  process.exit(0);
+}
+if (argv.includes('--version') || argv.includes('-V')) {
+  process.stdout.write(`${pkg.version}\n`);
+  process.exit(0);
+}
 
 // Configuration from environment
 const MODEI_API_URL = process.env.MODEI_API_URL || 'https://modei.ai';
