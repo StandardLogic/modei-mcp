@@ -36,7 +36,7 @@ export const tools: Tool[] = [
       required: ['passport_id'],
       properties: {
         passport_id: { type: 'string', description: 'The passport ID' },
-        decision: { type: 'string', enum: ['PERMIT', 'BLOCK', 'SUSPEND'], description: 'Filter by decision' },
+        decision: { type: 'string', enum: ['allow', 'block', 'request_hold'], description: 'Filter by canonical decision (engine-emit subset). Accepts `allow`, `block`, or `request_hold`.' },
         limit: { type: 'number', description: 'Max results to return' },
       },
     },

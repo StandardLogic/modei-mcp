@@ -341,7 +341,7 @@ describe('Gate Check', () => {
   });
 
   it('check_gate — minimal (no optional fields in body)', async () => {
-    fetchMock.mockResolvedValueOnce(jsonResponse({ decision: 'deny' }));
+    fetchMock.mockResolvedValueOnce(jsonResponse({ decision: 'block' }));
     await handleToolCall(api, 'check_gate', { gate_id: 'gate_test-1', action: 'write' });
     expect(lastCall().body).toEqual({ action: 'write' });
   });
@@ -363,7 +363,7 @@ describe('Gate Check', () => {
   });
 
   it('authorize_dry_run — includes requested_constraints when provided', async () => {
-    fetchMock.mockResolvedValueOnce(jsonResponse({ decision: 'deny' }));
+    fetchMock.mockResolvedValueOnce(jsonResponse({ decision: 'block' }));
     await handleToolCall(api, 'authorize_dry_run', {
       gate_id: 'gate_test-1',
       passport: { passport_id: 'pp_abc' },
@@ -475,7 +475,7 @@ describe('Enforcement', () => {
   });
 
   it('enforce_action — minimal (no optional fields)', async () => {
-    fetchMock.mockResolvedValueOnce(jsonResponse({ decision: 'deny' }));
+    fetchMock.mockResolvedValueOnce(jsonResponse({ decision: 'block' }));
     await handleToolCall(api, 'enforce_action', { passport_id: 'pp_abc', action: 'write' });
     const call = lastCall();
     expect(call.body.target).toBeUndefined();
@@ -493,10 +493,10 @@ describe('Enforcement', () => {
   it('list_enforcement_attestations — with filters', async () => {
     fetchMock.mockResolvedValueOnce(jsonResponse([]));
     await handleToolCall(api, 'list_enforcement_attestations', {
-      passport_id: 'pp_abc', decision: 'PERMIT', limit: 5,
+      passport_id: 'pp_abc', decision: 'allow', limit: 5,
     });
     const url = lastCall().url;
-    expect(url).toContain('decision=PERMIT');
+    expect(url).toContain('decision=allow');
     expect(url).toContain('limit=5');
   });
 

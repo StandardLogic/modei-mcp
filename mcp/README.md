@@ -111,7 +111,7 @@ Restart your client and you're ready to go.
 
 | Tool | Description |
 |------|-------------|
-| `check_gate` | Test a passport against a gate (allow/deny preview) |
+| `check_gate` | Test a passport against a gate (allow/block preview) |
 | `authorize_dry_run` | Test authorization without executing |
 
 ### Constraints & Templates (6)

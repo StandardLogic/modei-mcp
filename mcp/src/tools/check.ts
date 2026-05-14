@@ -8,7 +8,7 @@ import { ApiClient } from '../api-client.js';
 export const tools: Tool[] = [
   {
     name: 'check_gate',
-    description: 'Test a passport against a gate to preview the allow/deny decision.',
+    description: 'Test a passport against a gate to preview the canonical authorization decision (`allow` on grant, `block` on refusal).',
     inputSchema: {
       type: 'object',
       required: ['gate_id', 'action'],
