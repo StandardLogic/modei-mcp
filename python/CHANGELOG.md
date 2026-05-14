@@ -8,6 +8,51 @@ version numbering.
 
 ## [Unreleased]
 
+## [1.1.0a2] - 2026-05-14
+
+Prerelease. Install with `pip install modei-python==1.1.0a2 --pre`.
+
+### Changed (BREAKING — prerelease, no semver guarantee)
+
+- **Canonical decision taxonomy on the wire.** Tracks v1 sprint item 1
+  (decision taxonomy reconciliation) in the Modei platform repo, which
+  flipped every API endpoint and MCP tool from the legacy
+  `PERMIT`/`BLOCK`/`SUSPEND` (enforcement) and `allow`/`deny`
+  (gate-check) vocabularies to the eight-value canonical taxonomy from
+  system model §4.2.
+- New `modei.types.Decision` type alias — `Literal` of the eight
+  canonical values. Emitted in v1: `"allow"`, `"block"`,
+  `"request_hold"`, `"approved"`, `"denied"`. Reserved (admitted by
+  the schema but never produced by the v1 runtime): `"output_hold"`,
+  `"released"`, `"redacted"` — placeholders for the post-v1
+  Output-Hold pipeline.
+- `EnforceResult.decision` narrowed from
+  `Literal["PERMIT", "BLOCK", "SUSPEND"]` to `Decision`. Models parsed
+  from `/api/enforce` responses now type-check against canonical
+  strings.
+- `EnforcementAttestation.decision` narrowed from generic `str` to
+  `Decision`. Applies to rows returned by
+  `list_enforcement_attestations()` and `get_enforcement_attestation()`
+  — the API now translates the legacy column vocabulary at the
+  read boundary, so SDK consumers see canonical strings end-to-end.
+- `CheckResult.decision` and `Attestation.decision` narrowed from
+  `Optional[str]` to `Optional[Decision]`. `/api/gates/[id]/check`
+  responses and attestation listings emit canonical values.
+- `Client.list_enforcement_attestations(decision=...)` and the async
+  equivalent accept a canonical decision filter string. The API now
+  validates against `allow`/`block`/`request_hold` (engine-emit
+  subset); passing legacy values returns an error from the server.
+  Filter parameter typing stays `Optional[str]` for flexibility.
+
+### Migration
+
+Any consumer code with `if result.decision == "PERMIT":` switches to
+`if result.decision == "allow":`. `BLOCK` → `block`, `SUSPEND` →
+`request_hold`. There is no backward-compatibility shim in the SDK —
+the `modei-python@1.1.0a1` types-and-strings combination predates
+this taxonomy decision and is not preserved (prerelease state
+permits the break).
+
 ## [1.1.0a1] - 2026-04-22
 
 Prerelease. Install with `pip install modei-python==1.1.0a1 --pre`. A default

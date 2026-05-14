@@ -352,7 +352,7 @@ class TestGateCheck:
 
     async def test_check_gate_minimal(self, async_client, mock_api):
         route = mock_api.post("/api/gates/gate_test-1/check").mock(
-            return_value=httpx.Response(200, json={"decision": "deny"})
+            return_value=httpx.Response(200, json={"decision": "block"})
         )
         await async_client.check_gate("gate_test-1", action="write")
         req_body = json.loads(route.calls[0].request.content)
@@ -386,7 +386,7 @@ class TestGateCheck:
 
     async def test_authorize_dry_run_with_constraints(self, async_client, mock_api):
         route = mock_api.post("/api/authorize/dry-run").mock(
-            return_value=httpx.Response(200, json={"decision": "deny"})
+            return_value=httpx.Response(200, json={"decision": "block"})
         )
         await async_client.authorize_dry_run(
             gate_id="gate_test-1",
@@ -503,7 +503,7 @@ class TestEnforcement:
 
     async def test_enforce_action_minimal(self, async_client, mock_api):
         route = mock_api.post("/api/enforce").mock(
-            return_value=httpx.Response(200, json={"decision": "deny"})
+            return_value=httpx.Response(200, json={"decision": "block"})
         )
         await async_client.enforce_action(passport_id="pp_abc", action="write")
         req_body = json.loads(route.calls[0].request.content)

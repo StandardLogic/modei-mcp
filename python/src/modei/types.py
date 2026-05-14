@@ -9,6 +9,43 @@ from pydantic import BaseModel, Field
 
 
 # ---------------------------------------------------------------------------
+# Canonical Decision Taxonomy
+# ---------------------------------------------------------------------------
+
+
+Decision = Literal[
+    "allow",
+    "block",
+    "request_hold",
+    "approved",
+    "denied",
+    "output_hold",
+    "released",
+    "redacted",
+]
+"""The canonical eight-value attestation decision taxonomy from the Modei
+system model §4.2.
+
+Emitted by the v1 Modei runtime:
+    - ``"allow"``         — CEL engine grants the action.
+    - ``"block"``         — CEL engine refuses the action.
+    - ``"request_hold"``  — CEL engine holds the action pending approval.
+    - ``"approved"``      — supravision resolution: held action approved.
+    - ``"denied"``        — supravision resolution: held action denied.
+
+Reserved (schema admits, no runtime emit path in v1; placeholders for the
+Output-Hold pipeline per system model §3.7):
+    - ``"output_hold"``   — action ran; output withheld pending review.
+    - ``"released"``      — reviewer released held output as-is.
+    - ``"redacted"``      — reviewer released held output with redactions.
+
+All eight values are declared up front so consumer code typing on
+``Decision`` stays stable through the post-v1 Output-Hold rollout without
+a propagating type-widening refactor.
+"""
+
+
+# ---------------------------------------------------------------------------
 # Gates
 # ---------------------------------------------------------------------------
 
@@ -101,7 +138,7 @@ class Attestation(BaseModel):
     agent_id: Optional[str] = None
     action: Optional[str] = None
     target: Optional[str] = None
-    decision: Optional[str] = None
+    decision: Optional[Decision] = None
     reason_code: Optional[str] = None
     signature: Optional[str] = None
     attestation_json: Optional[str] = None
@@ -214,7 +251,7 @@ class EnforceRequest(BaseModel):
 
 
 class EnforceResult(BaseModel):
-    decision: Literal["PERMIT", "BLOCK", "SUSPEND"]
+    decision: Decision
     evaluations: list[dict[str, Any]] = Field(default_factory=list)
     blocked_by: Optional[str] = None
     block_reason: Optional[str] = None
@@ -229,7 +266,7 @@ class EnforcementAttestation(BaseModel):
     gate_id: str
     action: str
     target: Optional[str] = None
-    decision: str
+    decision: Decision
     constraint_evaluations: Optional[list[dict[str, Any]]] = None
     signature: Optional[str] = None
     attestation_json: Optional[str] = None
@@ -409,7 +446,7 @@ class SLAComplianceReport(BaseModel):
 
 class CheckResult(BaseModel):
     allowed: bool
-    decision: Optional[str] = None
+    decision: Optional[Decision] = None
     reason_code: Optional[str] = None
     access_mode: Optional[str] = None
     attestation_id: Optional[str] = None
