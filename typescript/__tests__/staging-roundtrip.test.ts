@@ -191,9 +191,10 @@ describe.skipIf(!STAGING_URL)('staging round-trip (C20.7)', () => {
 
       const body = JSON.parse(text) as { allowed?: boolean; decision?: string };
       expect(body.allowed, `expected allowed=true; got body=${text}`).toBe(true);
-      // Endpoint returns lowercase "allow"/"deny"; canonical PERMIT/BLOCK/
-      // SUSPEND taxonomy reconciliation tracked in modei checklist C19.7
-      // additions.
+      // `/check` emits the canonical decision taxonomy per Modei v1 sprint
+      // item 1 — `allow` on grant, `block` on refusal. The legacy
+      // `PERMIT`/`BLOCK`/`SUSPEND` enforcement vocabulary and the prior
+      // `allow`/`deny` /check wire are both retired.
       expect(body.decision).toBe('allow');
     });
 

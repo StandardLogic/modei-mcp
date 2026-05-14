@@ -1,3 +1,8 @@
+export {
+  EMITTED_DECISIONS,
+  type Decision,
+  type EmittedDecision,
+} from './decision.js';
 export { canonicalizeStrict } from './passport/canonical.js';
 export {
   PASSPORT_VERIFY_REASON_CODES,

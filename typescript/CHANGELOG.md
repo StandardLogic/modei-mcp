@@ -7,6 +7,52 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0-rc.2] — 2026-05-14
+
+Release candidate. Install with `npm install modei-typescript@next` (or
+`pnpm add modei-typescript@next`).
+
+### Added
+
+- **`Decision` type** — `Literal` union of the eight canonical attestation
+  decision values from the Modei system model §4.2 (`allow`, `block`,
+  `request_hold`, `approved`, `denied`, plus the reserved `output_hold`,
+  `released`, `redacted` placeholders for the post-v1 Output-Hold
+  pipeline). Use for typing `/check`, `/enforce`, attestation listings,
+  verifier endpoints, and supravision MCP responses.
+- **`EMITTED_DECISIONS`** constant — readonly tuple of the five canonical
+  values the v1 runtime actually emits. Drives filter dropdowns, runtime
+  guards, and exhaustive matches on currently-reachable code paths.
+- **`EmittedDecision`** — narrower `Literal` union over
+  `EMITTED_DECISIONS` for code paths that only handle the five emitted
+  values.
+
+### Changed
+
+- `__tests__/staging-roundtrip.test.ts` comment updated to reflect the
+  canonical wire shape. The `expect(body.decision).toBe('allow')`
+  assertion was already canonical and continues to pass.
+
+### Notes
+
+This bump tracks v1 sprint item 1 (decision taxonomy reconciliation)
+in the Modei platform repo. The Modei API and MCP tools now emit the
+canonical taxonomy on every endpoint, replacing both the legacy
+`PERMIT`/`BLOCK`/`SUSPEND` enforcement vocabulary and the legacy
+`allow`/`deny` /check wire.
+
+This RC adds no consumer-facing parsing logic — `modei-typescript` is
+still scoped to passport issuance, verification, and delegation;
+there is no built-in REST client. The `Decision` type is exported so
+SDK consumers building their own authorization-aware code can type
+their wire-parsing against it.
+
+No backward-compatibility shim was removed (none existed). No
+byte-parity fixtures changed — the taxonomy lives on the decision
+emit path, not in envelope content; all passport-envelope signature
+and canonicalization fixtures (`PassportIssuer`, `PassportVerifier`,
+`DelegationBuilder`) remain unchanged.
+
 ## [1.0.0-rc.1] — 2026-04-22
 
 Release candidate. Install with `npm install modei-typescript@next` (or
